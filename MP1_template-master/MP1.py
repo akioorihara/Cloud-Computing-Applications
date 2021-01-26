@@ -1,5 +1,4 @@
-#Akio O
-
+#Akio. O CS 498 CCA
 import random 
 import os
 import string
@@ -25,14 +24,33 @@ def getIndexes(seed):
     ret = []
     for i in range(0,n):
         ret.append(random.randint(0, 50000-1))
+        print(ret[i])
     return ret
 
 def process(userID):
-    indexes = getIndexes(userID)
+    # I am commenting this line for now 
+    # indexes = getIndexes(userID)
+
     ret = []
     # TODO
-                    
-    for word in ret:
-        print word
+    # Access the text file
 
-process(sys.argv[1])
+    lines = [] 
+    f = open(os.path.join(sys.path[0], "input.txt"), "r")
+    for i in range(10):
+        # lines[i] = f.readline()
+        print(f.readline())      #this reads one by one 
+
+    #read the file 
+
+    # device into a list of words using delimiters
+     
+    #Make everything lowercase 
+    #maybe we can use the fuction called string.lowercase 
+    
+    for word in ret:
+        print(word)
+
+# process(sys.argv[1])
+process(0)
+
