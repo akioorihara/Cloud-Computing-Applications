@@ -37,11 +37,11 @@ def process(userID):
 
     lines = [] 
     f = open(os.path.join(sys.path[0], "input.txt"), "r")
-    for i in range(10):
-        # lines[i] = f.readline()
-        print(f.readline())      #this reads one by one 
-
-    #read the file 
+    lines = f.readlines() #Read entire file 
+    
+    # for i in range(10):
+    #      lines[i] = f.readlines()
+    #     # print(f.readline())      #this reads one by one 
 
     # device into a list of words using delimiters
      
