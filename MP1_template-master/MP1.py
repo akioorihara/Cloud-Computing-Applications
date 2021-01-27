@@ -16,6 +16,7 @@ stopWordsList = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "y
             "too", "very", "s", "t", "can", "will", "just", "don", "should", "now"]
 
 delimiters = " \t,;.?!-:@[](){}_*/"
+# delimiters = "\n"
 
 def getIndexes(seed):
     random.seed(seed)
@@ -28,9 +29,7 @@ def getIndexes(seed):
     return ret
 
 def process(userID):
-    # I am commenting this line for now 
     # indexes = getIndexes(userID)
-
     ret = []
     # TODO
     # Access the text file
@@ -41,7 +40,12 @@ def process(userID):
 
     i = 0
     for line in lines:
-        ret.append(line.lower())
+        ret.append(line.lower().split(delimiters))
+        
+        print(ret[i])
+        i += 1
+        
+
         
         
 
@@ -52,7 +56,7 @@ def process(userID):
     #maybe we can use the fuction called string.lowercase 
     
     # for word in ret:
-        # print(word)
+    #     print(word)
 
 # process(sys.argv[1])
 process(0)
