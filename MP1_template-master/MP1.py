@@ -36,20 +36,23 @@ def process(userID):
     # Access the text file
 
     lines = [] 
-    f = open(os.path.join(sys.path[0], "input.txt"), "r")
+    f = open(os.path.join(sys.path[0], "input1.txt"), "r")
     lines = f.readlines() #Read entire file 
-    
-    # for i in range(10):
-    #      lines[i] = f.readlines()
-    #     # print(f.readline())      #this reads one by one 
 
+    i = 0
+    for line in lines:
+        ret.append(line.lower())
+        
+        
+
+    
     # device into a list of words using delimiters
      
     #Make everything lowercase 
     #maybe we can use the fuction called string.lowercase 
     
-    for word in ret:
-        print(word)
+    # for word in ret:
+        # print(word)
 
 # process(sys.argv[1])
 process(0)
