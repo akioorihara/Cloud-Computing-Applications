@@ -40,15 +40,14 @@ def process(userID):
     i = 0
     freq = {}
     for line in lines:
-        ret.append(line.strip().lower().split("_"))
-    
-    match_pattern = re.findall(r'\b[a-z]{stopWordsList\b', ret)
-    for word in match_pattern: 
-        count = freq.get(word, 0)
-        freq[word] = count +1 
-    freq = 
-        # print (ret[i])
-        i += 1
+        # ret.append(line.strip().lower().split('_'))
+        ret.append(line.strip().lower())
+
+        print(re.split(r'[ \t,;.?!-:@[](){}_*/]', ret[i]))
+        # print(ret[i])
+        i += 1 
+ 
+
     
         
 
