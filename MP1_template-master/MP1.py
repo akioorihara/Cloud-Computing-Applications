@@ -3,6 +3,7 @@ import random
 import os
 import string
 import sys
+import re 
 
 stopWordsList = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours",
             "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its",
@@ -31,21 +32,24 @@ def process(userID):
     # indexes = getIndexes(userID)
     ret = []
     # TODO
-    
-    counter = 0
+
     lines = [] 
     f = open(os.path.join(sys.path[0], "input1.txt"), "r")
     lines = f.readlines() #Read entire file 
 
-
     i = 0
+    freq = {}
     for line in lines:
         ret.append(line.strip().lower().split("_"))
-
-        print (ret[i])
+    
+    match_pattern = re.findall(r'\b[a-z]{stopWordsList\b', ret)
+    for word in match_pattern: 
+        count = freq.get(word, 0)
+        freq[word] = count +1 
+    freq = 
+        # print (ret[i])
         i += 1
-        
-
+    
         
 
      
@@ -54,6 +58,7 @@ def process(userID):
     
     # for word in ret:
     #     print(word)
+
     f.close()
 # process(sys.argv[1])
 process(0)
