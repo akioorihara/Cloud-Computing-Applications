@@ -42,8 +42,8 @@ def process(userID):
     for line in lines:
         # ret.append(line.strip().lower().split('_'))
         ret.append(line.strip().lower())
-        ret[i] = (re.split(r'[\t,();:!-@.&{}_*/\\]', ret[i])) #how to exclude [] but the txt does not contain that  
-        # print(ret[i])
+        ret[i] = (re.split(r"['['\t,();:!-@.&{}_*/\\]", ret[i])) #how to exclude (right bracket)] but the txt does not contain that  
+        print(ret[i])
         i += 1 
 
 
