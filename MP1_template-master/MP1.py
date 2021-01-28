@@ -15,8 +15,7 @@ stopWordsList = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "y
             "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than",
             "too", "very", "s", "t", "can", "will", "just", "don", "should", "now"]
 
-delimiters = " \t,;.?!-:@[](){}_*/"
-# delimiters = "\n"
+delimiters = " \t,;.?!-:@[](){}_*/" #not sure if I am using this correctly
 
 def getIndexes(seed):
     random.seed(seed)
@@ -32,32 +31,30 @@ def process(userID):
     # indexes = getIndexes(userID)
     ret = []
     # TODO
-    # Access the text file
-
+    
+    counter = 0
     lines = [] 
     f = open(os.path.join(sys.path[0], "input1.txt"), "r")
     lines = f.readlines() #Read entire file 
 
+
     i = 0
     for line in lines:
-        ret.append(line.lower().split(delimiters))
-        
-        print(ret[i])
+        ret.append(line.strip().lower().split("_"))
+
+        print (ret[i])
         i += 1
         
 
         
-        
 
-    
-    # device into a list of words using delimiters
      
     #Make everything lowercase 
     #maybe we can use the fuction called string.lowercase 
     
     # for word in ret:
     #     print(word)
-
+    f.close()
 # process(sys.argv[1])
 process(0)
 
