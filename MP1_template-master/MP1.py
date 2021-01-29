@@ -30,7 +30,7 @@ def getIndexes(seed):
     return ret
 
 def process(userID):
-    # indexes = getIndexes(userID)  #original code 
+    indexes = getIndexes(userID)  #original code 
     ret = []
     # TODO
 
@@ -39,30 +39,24 @@ def process(userID):
     lines = f.readlines() #Read entire file 
 
     i = 0
-    counts = []
     for line in lines:
         ret.append(line.strip().lower())
         ret[i] = (re.split(r"['[' \t,();:!-@.&{}_*/\\\]]", ret[i])) 
-        #encode? not sure what to do 
+        #encode? not sure what to do .... 
 
         while '' in ret[i]:  
             ret[i].remove('')
 
-        #counter still needs work 
-        counts.append(Counter(ret[i]))
-
-        for l in ret[i]:
-            for stop in stopWordsList:
-                if l == stop:
-                    pass
-                    # print("Match word is ", l)
         i += 1 
 
-    for count in counts: 
-        print(count)
+    counts = Counter()
+    for sentense in ret:
+        for word in sentense:
+            if word not in stopWordsList:
+                counts[word] +=1
+                
+    print(type(indexes))
 
-    #Make everything lowercase 
-    #maybe we can use the fuction called string.lowercase 
     
     # for word in ret:
     #     print(word)
