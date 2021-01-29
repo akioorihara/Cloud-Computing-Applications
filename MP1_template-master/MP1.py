@@ -48,7 +48,9 @@ def process(userID):
         while '' in ret[i]:  
             ret[i].remove('')
 
+        #counter still needs work 
         counts.append(Counter(ret[i]))
+
         for l in ret[i]:
             for stop in stopWordsList:
                 if l == stop:
