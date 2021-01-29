@@ -4,6 +4,7 @@ import os
 import string
 import sys
 import re 
+from collections import Counter
 
 stopWordsList = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours",
             "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its",
@@ -29,7 +30,7 @@ def getIndexes(seed):
     return ret
 
 def process(userID):
-    # indexes = getIndexes(userID)
+    # indexes = getIndexes(userID)  #original code 
     ret = []
     # TODO
 
@@ -38,19 +39,26 @@ def process(userID):
     lines = f.readlines() #Read entire file 
 
     i = 0
-    freq = {}
+    counts = []
     for line in lines:
-        # ret.append(line.strip().lower().split('_'))
         ret.append(line.strip().lower())
-        ret[i] = (re.split(r"['['\t,();:!-@.&{}_*/\\\]]", ret[i])) #how to exclude (right bracket)] but the txt does not contain that  
-        print(ret[i])
+        ret[i] = (re.split(r"['[' \t,();:!-@.&{}_*/\\\]]", ret[i])) 
+        #encode? not sure what to do 
+
+        while '' in ret[i]:  
+            ret[i].remove('')
+
+        counts.append(Counter(ret[i]))
+        for l in ret[i]:
+            for stop in stopWordsList:
+                if l == stop:
+                    pass
+                    # print("Match word is ", l)
         i += 1 
 
+    for count in counts: 
+        print(count)
 
-    
-        
-
-     
     #Make everything lowercase 
     #maybe we can use the fuction called string.lowercase 
     
@@ -58,6 +66,6 @@ def process(userID):
     #     print(word)
 
     f.close()
-# process(sys.argv[1])
+# process(sys.argv[1])   #the original code 
 process(0)
 
