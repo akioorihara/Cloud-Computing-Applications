@@ -23,7 +23,7 @@ delimiters = " \t,;.?!-:@[](){}_*/"
 def getIndexes(seed):
     random.seed(seed)
     # n = 10000 #actual int
-    n = 100  # test int
+    n = 1000  # test int
 
     number_of_lines = 50000
     ret = []
@@ -45,14 +45,14 @@ def process(userID):
 
     i = 0
     for line in lines:
-        ret.append(line.strip().lower())
-        ret[i] = (re.split(r"['[' \t,();:!-@.&{}_*/\\\]]", ret[i]))
+        ret.append(line.strip().lower().split('_'))
+        ret[i] = (re.split(r"['[' \t |\\|/|,|;|.|?|!|-|:|@|{|}|(|)|\[|*|-|\]|-]", str(ret[i])))
+        # ret[i] = (re.split(r"['[' \t,();:!-@.{}_*/\\\]]", str(ret[i])))  #& is removed, gotta find out 
         # encode? not sure what to do ....
 
         while '' in ret[i]:
             ret[i].remove('')
         i += 1
-
 
     counts = Counter()
     countNum = Counter()
@@ -67,7 +67,11 @@ def process(userID):
                 counts[word] += 1
 
     print(counts)
-    print(countNum)
+    # print(countNum)
+
+    # sorted(counts, reverse=True)
+    # print("After the Sorted()", counts)
+
     # for word in ret:
     #     print(word)
 
