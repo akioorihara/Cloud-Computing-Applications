@@ -30,7 +30,7 @@ def getIndexes(seed):
     for i in range(0, n):
         # ret.append(random.randint(0, 50000-1))
         ret.append(random.randint(0, 50-1))
-        print(ret[i])
+        # print(ret[i])
     return ret
 
 
@@ -41,7 +41,10 @@ def process(userID):
 
     lines = []
     f = open(os.path.join(sys.path[0], "input1.txt"), "r")
-    lines = f.readlines()  # Read entire file
+    # f = sys.stdin.readlines()
+    # lines = [x.strip('\n') for x in f]
+    print(lines)
+    lines = f.readlines()  # needs to read line by line since it will be replaced with another text file 
 
     i = 0
     for line in lines:
@@ -55,25 +58,22 @@ def process(userID):
         i += 1
 
     counts = Counter()
-    countNum = Counter()
-    finalRet = []
-    print(indexes[0], "<-This is the index 0")
 
+   
+    finalRet = []
+    countNum = Counter()
     for index in indexes: 
         finalRet.append(ret[index])
         countNum[index] += 1
-
 
     for sentense in finalRet:   
         for word in sentense:
             if word not in stopWordsList:
                 counts[word] += 1
 
+    print(sorted(counts.most_common(), key=lambda x: (-x[1],[0])))
     print(counts)
-    # print(countNum)
-
-    # sorted(counts, reverse=True)
-    # print("After the Sorted()", counts)
+    
 
     # for word in ret:
     #     print(word)
