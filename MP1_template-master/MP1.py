@@ -23,14 +23,14 @@ delimiters = " \t,;.?!-:@[](){}_*/"
 def getIndexes(seed):
     random.seed(seed)
     # n = 10000 #actual int
-    n = 1000  # test int
+    n = 100  # test int
 
     number_of_lines = 50000
     ret = []
     for i in range(0, n):
         # ret.append(random.randint(0, 50000-1))
         ret.append(random.randint(0, 50-1))
-        # print(ret[i])
+        print(ret[i])
     return ret
 
 
@@ -57,9 +57,12 @@ def process(userID):
     counts = Counter()
     countNum = Counter()
     finalRet = []
+    print(indexes[0], "<-This is the index 0")
+
     for index in indexes: 
         finalRet.append(ret[index])
         countNum[index] += 1
+
 
     for sentense in finalRet:   
         for word in sentense:
