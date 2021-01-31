@@ -22,14 +22,14 @@ delimiters = " \t,;.?!-:@[](){}_*/"
 
 def getIndexes(seed):
     random.seed(seed)
-    # n = 10000 #actual int
-    n = 100  # test int
+    n = 10000 #actual int
+    # n = 100  # test int
 
     number_of_lines = 50000
     ret = []
     for i in range(0, n):
-        # ret.append(random.randint(0, 50000-1))
-        ret.append(random.randint(0, 50-1))
+        ret.append(random.randint(0, 50000-1))
+        # ret.append(random.randint(0, 50-1))
         # print(ret[i])
     return ret
 
@@ -40,16 +40,15 @@ def process(userID):
     # TODO
 
     lines = []
-    f = open(os.path.join(sys.path[0], "input1.txt"), "r")
+    f = open(os.path.join(sys.path[0], "input.txt"), "r")
     # f = sys.stdin.readlines()
     # lines = [x.strip('\n') for x in f]
-    print(lines)
     lines = f.readlines()  # needs to read line by line since it will be replaced with another text file 
 
     i = 0
     for line in lines:
         ret.append(line.strip().lower().split('_'))
-        ret[i] = (re.split(r"['[' \t |\\|/|,|;|.|?|!|-|:|@|{|}|(|)|\[|*|-|\]|-]", str(ret[i])))
+        ret[i] = (re.split(r"['[' \t |\\||/|,|;|.|?|!|-|:|@|{|}|(|)|\[|*|-|\]|-]", str(ret[i])))
         # ret[i] = (re.split(r"['[' \t,();:!-@.{}_*/\\\]]", str(ret[i])))  #& is removed, gotta find out 
         # encode? not sure what to do ....
 
@@ -58,11 +57,10 @@ def process(userID):
         i += 1
 
     counts = Counter()
-
    
     finalRet = []
     countNum = Counter()
-    for index in indexes: 
+    for index in indexes:
         finalRet.append(ret[index])
         countNum[index] += 1
 
@@ -71,15 +69,21 @@ def process(userID):
             if word not in stopWordsList:
                 counts[word] += 1
 
-    print(sorted(counts.most_common(), key=lambda x: (-x[1],[0])))
-    print(counts)
-    
+    # print(sorted(counts.most_common(), key=lambda x: (-x[1], x[0])))
+    v = (sorted(counts.most_common(), key=lambda x: (-x[1], x[0])))
+  
+    # print(type(v))
+    cnt = 0
+    for count in v:
+        print(count[0])
+        if cnt >= 20:
+            break
+        cnt += 1
 
     # for word in ret:
     #     print(word)
 
     f.close()
-
 
 # process(sys.argv[1])   #the original code
 process(0)
