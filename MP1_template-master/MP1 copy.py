@@ -1,16 +1,10 @@
 # Akio. O CS 498 CCA
-# from __future__ import unicode_literals
 import random
 import os
 import string
 import sys
 import re
 from collections import Counter
-# import codecs
-
-
-
-
 
 stopWordsList = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours",
                  "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its",
@@ -54,10 +48,8 @@ def process(userID):
 
     i = 0
     for line in lines:
-        line = filter(lambda x: ord(x) < 128, line)
         ret.append(line.strip('\n').lower())
-        # delimiters = " \t,;.?!-:@[](){}_*/"
-        ret[i] = (re.split(r"['[' |\t|\/|,|;|\.|?|!|-|:|@|{|}|\(|\)|\[|\*|-|_|\]|-]", str(ret[i])))
+        ret[i] = (re.split(r"['[' |\t|\/|,|;|.|?|!|-|:|@|{|}|(|)|\[|*|-|_|\]|-]", str(ret[i])))
         # ret[i] = (re.split(r"['[' \t,();:!-@.{}_*/\\\]]", str(ret[i])))  #& is removed, gotta find out 
         # encode? not sure what to do ....
 
