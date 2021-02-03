@@ -1,14 +1,17 @@
-from flask import Flask
+from flask import Flask, request
 import random 
+
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/' , methods=['GET', 'POST'])
 def getNum():
+    if request.method == 'POST':
+        return 0
     random.seed(0)
     r = str(random.random())
     return r
 
 @app.route('/')
 def postNum():
-    return "test"
+    pass
