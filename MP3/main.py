@@ -1,22 +1,12 @@
-from flask import Flask, request, g
 import json
-import os 
+from collections import deque
+import re
 
+input = '{"graph": "Chicago->Urbana,Urbana->Springfield,Chicago->Lafayette"}'
 
-app = Flask(__name__)
- 
-seed = 0 
-@app.route('/' , methods=['GET','POST'])
-def getNumber():
+graph = re.split(r"['['  \"|\t|,|;|:|{|}|\->]", input)
+while "" in graph:
+    graph.remove("")
 
-    global seed 
-    if request.method == 'GET':
-        return str(seed)
-
-    if request.method == 'POST':  #Trying to post it but do we need a form in html to input? 
-        data = request.get_json()
-        seed = data['num']
-        return str(seed)
- 
-    return "Done"
+print(graph)
 
