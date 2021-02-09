@@ -11,14 +11,18 @@ source = {}
 destination = {}
 count = 0
 for index in graph:
-    print(index)
     if count == 0:
-        pass 
-    if count % 1 == 0:
-        source = index 
-    if count % 2 == 0:
-        destination = index
+        count += 1
+        continue
+    if count % 2 != 0:
+        source[count] = index
+        print(source, "This is count != 0")
+    else: 
+        destination [count]= index
+        print(destination, "This is dest")
     count += 1
 
-print(graph, source, destination)
+print(graph)
+print("This is source", source)
+print("This is the Dist", destination)
 
