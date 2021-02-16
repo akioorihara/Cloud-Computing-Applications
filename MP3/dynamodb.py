@@ -16,9 +16,9 @@ def bfs(graph, vertex):
                 level[n] = level[v] + 1
                 parent[n] = v
             
-            if (level[n]): #print the positive dist 
-                print(v) #itrating source 
-                print(graph[v])
+            # if (level[n]): #print the positive dist 
+            #     print(v) #itrating source 
+            #     print(graph[v])
 
     return level
 
@@ -30,12 +30,25 @@ graph_dict = json.loads(json_dump)
 
 graph = defaultdict(list)
 nodes = graph_dict["graph"].split(',')
+# print(nodes)
 for node in nodes:
     source, dest = node.split('->')
     graph[source].append(dest)
 
-(bfs(graph,"Chicago"))
-
-for key in graph.keys():
-    node_dist = bfs(graph,key)
+# (bfs(graph,"Chicago"))
+# print (graph)
+print(list(graph))
+for source in list(graph):
+    node_dist = bfs(graph,source)
+    # print(source)
     # print(node_dist)
+    for dest in node_dist:
+        # print(source)
+        if source is dest: 
+            continue
+        else:
+            print(source, dest, node_dist[dest])
+            # pass 
+
+
+
