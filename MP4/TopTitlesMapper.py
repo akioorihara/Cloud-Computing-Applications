@@ -6,11 +6,11 @@ import sys
 
 
 for line in sys.stdin:
+    line = line.strip()
     word, count = line.split('\t')
     print('%s\t%s' % (word,count)) 
 
 # for line in sys.stdin:
-       
 #        word,count = line.split('\t')
 #     print('%s\t%s' % (word,count))
 #     print(word,count)
