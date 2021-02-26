@@ -43,7 +43,7 @@ for d in data:
 var = math.floor(var / count)
 
 x = [mean, sum, min, max, var]
-y = ["Mean", "Sum", "Min", "Max", "var"]
+y = ["Mean", "Sum", "Min", "Max", "Var"]
 # print(mean, sum, min, max, var)
 
 #TODO
