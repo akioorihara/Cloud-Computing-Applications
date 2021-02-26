@@ -1,21 +1,26 @@
 #!/usr/bin/env python3
 import sys
-
+from collections import defaultdict #added this 
 
 #TODO
 count = 0 
-pages = {}
-
+pages = defaultdict(list)
+id = {}
+orphan = []
 for line in sys.stdin:
   # TODO
   line = line.strip()
   parent, child = line.split('\t')
-  if parent not in child: 
-    count += 1 
-  # child = child.strip().split(" ")  
-  # print(line)
+  # pages['parent'] = parent
+  # pages['child'] = child
+  pages[parent].append(child)
 
-
+for parent, child in pages.items():
+  pass
+  
+# print(pages)
+# for page in pages:
+  # print(type(page))
 #TODO
 # print(xx) print as final output
 
