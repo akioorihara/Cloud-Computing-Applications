@@ -1,37 +1,38 @@
 #!/usr/bin/env python3
 import sys
-from collections import defaultdict #added this 
 
 #TODO
-count = 0 
-pages = defaultdict(list)
-id = {}
-orphan = []
+# pages = defaultdict(list)
+mydict = {} 
+orphans = []
 for line in sys.stdin:
   # TODO
   line = line.strip()
-  parent, child = line.split('\t')
-  # pages['parent'] = parent
-  # pages['child'] = child
-  pages[parent].append(child)
-
-for parent, child in pages.items():
-  pass
+  person, orphan = line.split('\t') #parent is str 
   
-# print(pages)
-# for page in pages:
-  # print(type(page))
+  # print(person,orphan)
+  if int(orphan) == 0:
+    orphans.append(int(person))
+  # for key in mydict:
+  # if len(mydict[key]) == 0:
+    
+for x in sorted(orphans):
+  print(x)
+# print(sorted(orphans))
+
+
+  # pages['parent'] = parent  #create a list and then add the value to the list and then append or extend to form a dict 
+  # pages['child'] = child    #loop through 
+  # pages[parent].append(child)
+  
+
+# for p in pages:
+#   if p[parent] = p[child]
+#     pass 
+#     #self link and not orphan 
+#   for p[parent] in  
+
 #TODO
 # print(xx) print as final output
-
-
-
-#  graph = defaultdict(list)
-#     nodes = graph_dict["graph"].split(',')
-#     for node in nodes:
-#       source, dest = node.split('->')
-#       graph[source].append(dest)
-    
-
 
 # 385744: 421957 3250680 3446893 5166549
