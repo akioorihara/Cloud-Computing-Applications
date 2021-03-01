@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 
 #TODO
@@ -5,7 +6,7 @@ total = {}
 for line in sys.stdin:
   # TODO
     line = line.strip()
-    page, count = line.split('\t', 1)
+    page, count = line.split('\t')
   
     if page not in total:
         total[page] = 0

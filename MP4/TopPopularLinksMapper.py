@@ -1,15 +1,23 @@
 #!/usr/bin/env python3
 import sys
+import re 
 
-
-# TODO
-
-
-
+mydict = {}
 for line in sys.stdin:
+  # TODO
+    line = line.strip()
+    fromPage, count = line.split('\t')
+    
+    fromPage = int(fromPage) 
+#     if fromPage not in mydict:
+#        mydict[fromPage] = []
 
-       #TODO
-
-
-#TODO
-# print('%s\t%s' % (  ,  )) pass this output to reducer
+    count = int(count)
+    if fromPage not in mydict: 
+       mydict[fromPage] = 0
+       
+    mydict[fromPage] = mydict[fromPage] + count            
+      
+for key in mydict:
+    print('%s\t%s' % (key, mydict[key])) #key = webpage # 
+  # (child) 90: (parent)421957 
