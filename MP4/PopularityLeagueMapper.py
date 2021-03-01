@@ -25,7 +25,6 @@ for line in sys.stdin:
 for key in mydict:
     if key in league:
        print('%s\t%s' % (key , mydict[key]))
-       # pass
 
        #TODO
        # print('%s\t%s' % (  ,  )) pass this output to reducer
