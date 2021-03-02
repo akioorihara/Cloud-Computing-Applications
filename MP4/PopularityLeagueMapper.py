@@ -10,6 +10,7 @@ with open(leaguePath) as f:
     #TODO      
     for line in f: 
        league.extend([int(x) for x in line.split()]) #int can be read like this 
+    # print(league)
 
 for line in sys.stdin:
     line.strip()
