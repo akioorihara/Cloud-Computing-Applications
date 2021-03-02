@@ -24,7 +24,7 @@ r = 0
 skip = 0
 for i in range(len(counts)-1):
     if skip:
-        skip = 0
+        skip -= 1
         continue
     if counts[i] < counts[i+1]:
         rank.append((r, counts[i]))
