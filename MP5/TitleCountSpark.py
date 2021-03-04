@@ -37,8 +37,19 @@ counts = lines.flatMap(lambda line: line.split(" ")) \
              .map(lambda word: (word, 1)) \
              .reduceByKey(lambda a, b: a + b)
 
-counts.saveAsTextFile(sys.argv[4])
-# counts.saveAsTextFile()
+
+output = counts.collect()
+for (line, count) in output:
+    line.strip()
+    token = splitter(line, delimeters)
+    token = [word for word in token if word not in stopWords]
+    token = [word for word in token if word not in '']
+    
+    for each in token: 
+        print("%s: %i" % (each.encode('utf-8'), count))
+
+# counts.saveAsTextFile(sys.argv[4])
+
 
 #TODO
 # with open(inputfile) as f:
