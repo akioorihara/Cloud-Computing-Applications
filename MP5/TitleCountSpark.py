@@ -25,7 +25,6 @@ with open(delimitersPath) as f:
     for line in f: 
         delimeters.extend(line)
 
-print("hello")
 inputF = [] 
 with open(inputFile, 'r', encoding="utf-8") as f: 
     for line in f: 
