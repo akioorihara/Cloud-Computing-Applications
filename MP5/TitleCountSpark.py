@@ -50,15 +50,17 @@ total = {}
 for line in output:
     line.strip()
     token = splitter(line, delimeters)
-    # print('%s\t%s' % (token[0].encode('utf-8'), count))
+    # print(token[0].encode('utf-8'))
+    # if (len(token) == 0):
+    #     print(line.encode('utf-8').decode(),len(token))
     token = [word for word in token if word not in stopWords]
     token = [word for word in token if word not in '']
     
     for each in token:
-        if each in total:
-            total[each] += 1
-        else:   
+        if each not in total:
             total[each] = 1
+        else:   
+            total[each] += 1 
         # print("%s: %i" % (each.encode('ascii', 'ignore').decode('ascii'), count))
 
 
@@ -66,11 +68,11 @@ for line in output:
 outputFile = open(sys.argv[4],"w")  #probably this way to save in a one file 
 swords = sorted(total.items(), key = lambda x: (x[1], x[0]), reverse=True)
 
-x = swords[:10] 
-for word in x[::-1]:
-    # print('%s\t%s' % (word[0].encode('utf-8'), word[1]))
+x = swords[:5] 
+x = sorted(x)
+for word in x:
+    # print('%s\t%s' % (word[0].encode('utf-8').decode(), word[1]))
     outputFile.write(str(word[0].encode('utf-8').decode()) + '\t' + str(word[1]) + '\n')
-    # pass
 
 
 
