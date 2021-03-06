@@ -38,18 +38,11 @@ lines = sc.textFile(sys.argv[3],1)
 # e = lines.take(20)
 # for i in e:
 #     print(i.encode('ascii', 'ignore').decode('ascii'))
-# def splitter(line):
-#     line = re.sub(r'^\W+|\W+$', '', line)
-#     return map(str.lower, re.split(r'\W+', line))
-
 
 # counts = lines.flatMap(lambda line: line.split()) \
-#              .map(lambda word: (word.lower(), 1)) \
-#              .reduceByKey(lambda a, b: a + b)
 counts = lines.flatMap(lambda line: splitter(line, delimeters).strip().split()) \
              .map(lambda word: (word.lower(), 1)) \
              .reduceByKey(lambda a, b: a + b)
-
 
 output = lines.collect()
 
@@ -76,7 +69,7 @@ swords = sorted(total.items(), key = lambda x: (x[1], x[0]), reverse=True)
 x = swords[:10] 
 for word in x[::-1]:
     # print('%s\t%s' % (word[0].encode('utf-8'), word[1]))
-    outputFile.write(str(word[0].encode('utf-8')) + '\t' + str(word[1]) + '\n')
+    outputFile.write(str(word[0].encode('utf-8').decode()) + '\t' + str(word[1]) + '\n')
     # pass
 
 
