@@ -17,6 +17,21 @@ sqlContext = SQLContext(sc)
 
 # Spark SQL - DataFrame API
 
+textFile = sc.textFile('gbooks')
+lines = textFile.map(lambda x: x.split('\t'))
+lines = lines.map(lambda x: (x[0], int(x[1]), int(x[2]), int(x[3]) ))
+
+schema = StructType([
+    StructField('word', StringType(), True),
+    StructField('count1', IntegerType(), True),
+    StructField('count2', IntegerType(), True),
+    StructField('count3', IntegerType(), True)
+    ])
+df = sqlContext.createDataFrame(lines, schema) 
+
+df.createOrReplaceTempView('dframe')
+sqlContext.sql("SELECT word, count(*) FROM dframe group by word Order by count(word) desc").show(3)
+
 
 ####
 # 4. MapReduce (10 points): List the three most frequent 'word' with their count of appearances
