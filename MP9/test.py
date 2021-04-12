@@ -5,14 +5,14 @@ import json
 url = "https://seorwrpmwh.execute-api.us-east-1.amazonaws.com/prod/mp-9"
 
 student = {
-    "submitterEmail": "", #<Your coursera account email>
-    "secret": "" #<Your secret token from coursera>
+    "submitterEmail": "orihara2@illinois.edu", #<Your coursera account email>
+    "secret": "RcuLFRr13jGNRk2o" #<Your secret token from coursera>
 }
 
-numFilteredEntries = 0 #<The count of the filtered entries from 3.2>
+numFilteredEntries = 1277 #<The count of the filtered entries from 3.2>
 
-viz1CsvPath = "" #<Filepath for your tableau viz1 csv file>
-viz2CsvPath = "" #<Filepath for your tableau viz2 csv file>
+viz1CsvPath = "/Users/Akio/Documents/GitHub/CS-498-CCA/MP9/mp9-viz1.csv" #<Filepath for your tableau viz1 csv file>
+viz2CsvPath = "/Users/Akio/Documents/GitHub/CS-498-CCA/MP9/mp9-viz2.csv" #<Filepath for your tableau viz2 csv file>
 
 # The column ordering in the tsv file may not be preserved when you export the data.
 # Therefore, please check and modify the respective column index below
