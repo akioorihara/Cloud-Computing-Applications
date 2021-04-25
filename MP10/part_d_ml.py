@@ -7,6 +7,7 @@ sc = SparkContext()
 sqlContext = SQLContext(sc)
 
 
+
 def predict(df_train, df_test):
     # TODO: Train random forest classifier
 
@@ -27,18 +28,22 @@ def main():
     # Hint: For types and format look at what the format required by the
     # `train` method for the random forest classifier
     # Hint 2: Look at the imports above
-    rdd_train = None
+    rdd_train = raw_training_data.map(lambda x : x.split(','))
 
+    print('train', rdd_train.collect())
     # TODO: Create dataframe from the RDD
-    df_train = None
+    df_train = rdd_train.toDF()
+    # df_train.show()
 
     raw_test_data = sc.textFile("dataset/test-features.data")
 
     # TODO: Convert text file lines into an RDD we can use later
-    rdd_test = None
+    rdd_test = raw_test_data.map(lambda x : x.split(','))
+    # print(rdd_test.collect())
 
     # TODO:Create dataframe from RDD
-    df_test = None
+    df_test = rdd_test.toDF()
+    # df_test.show()
 
     predictions = predict(df_train, df_test)
 
